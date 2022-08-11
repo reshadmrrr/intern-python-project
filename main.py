@@ -4,20 +4,23 @@ import time
 import traceback
 
 
-from util import TweeterUser
+from model import TweeterUser
 
 
 def main():
+
     print("Please login to your account")
     username = input("Username: ")
     password = getpass()
     print("Logging in ...")
+
     try:
         user = TweeterUser(username=username, password=password)
         if len(user.access_token) > 0:
             print("Login successful ...")
         else:
             print("Login failed ...")
+
         print("Checking recent tweets ...")
         tweets = user.get_last_5_tweets()
         user.print_tweets()
